@@ -53,5 +53,9 @@ namespace Bll
             }
             catch (Exception ex) { throw new Exception(ex.Message);}
         }
+        public bool FriendExists(int friendId)
+        {
+            return FriendDal.GetAllFriend().Any(f => f.Id == friendId);
+        }
     }
 }

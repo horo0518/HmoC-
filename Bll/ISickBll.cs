@@ -12,5 +12,7 @@ namespace Bll
         List<SickDto> GetAllSick();
         SickDto GetSickById(int id);
         void AddSick(SickDto Sick);
+
+        
     }
 }

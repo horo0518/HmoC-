@@ -14,18 +14,26 @@ namespace Bll
     {
         ISickDal SickDal;
         IMapper Mapper;
-        public SickBll(ISickDal SickDal, IMapper Mapper)
+        IFriendBll FriendBll;
+        public SickBll(ISickDal SickDal, IMapper Mapper, IFriendBll FriendBll)
         {
             this.SickDal = SickDal;
             this.Mapper = Mapper;
+            this.FriendBll = FriendBll;
         }
 
-        public void AddSick(SickDto SickDto)
+
+        public void AddSick(SickDto sickDto)
         {
             try
             {
+                // Check if the FriendId exists in the friends table
+                if (!this.FriendBll.FriendExists(sickDto.FriendId))
+                {
+                    throw new Exception($"Friend with id {sickDto.FriendId} does not exist");
+                }
 
-                Sick sick = Mapper.Map<Sick>(SickDto);
+                Sick sick = Mapper.Map<Sick>(sickDto);
 
                 SickDal.AddSick(sick);
             }
@@ -33,10 +41,9 @@ namespace Bll
             {
                 throw new Exception(ex.Message);
             }
-
         }
 
-
+    
         public List<SickDto> GetAllSick()
         {
             try

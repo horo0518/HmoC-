@@ -12,6 +12,7 @@ namespace Bll
         List<FriendDto> GetAllFriend();
         FriendDto GetFriendById(int id);
         void AddFriend(FriendDto Friend);
+        bool FriendExists(int friendId);
 
     }
 }
