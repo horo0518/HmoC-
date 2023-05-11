@@ -19,6 +19,8 @@ builder.Services.AddScoped(typeof(IFriendDal), typeof(FriendDal));
 builder.Services.AddScoped(typeof(ISickDal), typeof(SickDal));
 builder.Services.AddScoped(typeof(IVaccinationDal), typeof(VaccinationDal));
 
+
+
 builder.Services.AddDbContext<DataBaseHmo>();
 var mapperConfing = new MapperConfiguration(mc =>
 {

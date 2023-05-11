@@ -59,8 +59,7 @@ namespace Bll
             {
                 return FriendDal.GetAllFriend().Any(f => f.Id == friendId);
             }
-            catch (Exception ex) 
-            { throw new Exception(ex.Message ); }
+            catch (Exception ex) { throw new Exception(ex.Message ); }
         }
     }
 }

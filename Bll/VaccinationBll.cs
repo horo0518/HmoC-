@@ -15,13 +15,12 @@ namespace Bll
 
         IVaccinationDal VaccinationDal;
         IMapper Mapper;
-        IFriendBll FriendBll;
 
-        public VaccinationBll(IVaccinationDal VaccinationDal, IMapper Mapper, IFriendBll FriendBll)
+        public VaccinationBll(IVaccinationDal VaccinationDal, IMapper Mapper)
         {
             this.VaccinationDal = VaccinationDal;
             this.Mapper = Mapper;
-            this.FriendBll = FriendBll;
+           
         }
 
 
@@ -29,11 +28,6 @@ namespace Bll
         {
             try
             {
-                // Check if the FriendId exists in the friends table
-                if (FriendBll.FriendExists(VaccinationDto.FriendId))
-                {
-                    throw new Exception($"Friend with id {VaccinationDto.FriendId} does not exist");
-                }
 
                 Vaccination Vaccination = Mapper.Map<Vaccination>(VaccinationDto);
 
@@ -43,10 +37,9 @@ namespace Bll
             {
                 throw new Exception(ex.Message);
             }
-        }
 
-    
-    public List<VaccinationDto> GetAllVaccination()
+        }
+        public List<VaccinationDto> GetAllVaccination()
         {
             try
             {
