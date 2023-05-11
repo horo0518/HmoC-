@@ -55,7 +55,12 @@ namespace Bll
         }
         public bool FriendExists(int friendId)
         {
-            return FriendDal.GetAllFriend().Any(f => f.Id == friendId);
+            try
+            {
+                return FriendDal.GetAllFriend().Any(f => f.Id == friendId);
+            }
+            catch (Exception ex) 
+            { throw new Exception(ex.Message ); }
         }
     }
 }

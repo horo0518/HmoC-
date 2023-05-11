@@ -10,6 +10,8 @@ namespace Bll
     {
         List<VaccinationDto> GetAllVaccination();
         List<VaccinationDto> GetVaccinationById(int id);
-        void AddVaccination(VaccinationDto Vaccination);
+        void AddVaccination(VaccinationDto VaccinationDto);
+       
+
     }
 }
